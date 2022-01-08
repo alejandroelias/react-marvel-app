@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { CharacterGrid } from './CharactersGrid';
 
 export const CharactersScreen = () => {
 
@@ -9,7 +10,7 @@ export const CharactersScreen = () => {
     }, []);
 
     const getCharacters = async () => {
-        const url = 'https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=a469d537242aa86366793c4d967002ba&hash=7f20301e7b4fa19a61cffb032aab3714&limit=25';
+        const url = 'https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=a469d537242aa86366793c4d967002ba&hash=7f20301e7b4fa19a61cffb032aab3714&limit=5';
 
         const resp = await fetch(url);
         const { data } = await resp.json();
@@ -31,19 +32,16 @@ export const CharactersScreen = () => {
 
     return (
         <div>
-            <h2>Marvel Heroes</h2>
-            <hr />
-            <ol>
-                {
-                    heroes.map(({ id, name, thumbnailPath,extension }) => (
-                        <div key={id} >
-                            <h3>{name}</h3>
-                            <img src={thumbnailPath+"."+extension} alt={name} />
-                        </div>
+            {
 
-                    ))
-                }
-            </ol>
+                heroes.map(heroe => (
+
+                    <CharacterGrid
+                        key = {heroe.id}
+                        {...heroe}
+                    />
+                ))
+            }
         </div>
     )
 }

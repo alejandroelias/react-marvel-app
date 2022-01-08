@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CharactersScreen } from './components/Characters/CharactersScreen';
+import { MarvelHeroesApp } from './MarvelHeroesApp';
 // import PersistentDrawerLeft from './components/PersistentDrawerLeft';
 
 
 
 ReactDOM.render(
-    <CharactersScreen  />,
+
+    <MarvelHeroesApp  />,
   document.getElementById('root')
+  
 );
