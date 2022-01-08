@@ -21,8 +21,7 @@ export const CharactersScreen = () => {
                 id: results.id,
                 name: results.name,
                 description: results.description,
-                thumbnailPath: results.thumbnail.path,
-                extension: results.thumbnail.extension
+                thumbnail: results.thumbnail.path+"."+results.thumbnail.extension
             }
         })
 
@@ -33,7 +32,6 @@ export const CharactersScreen = () => {
     return (
         <div>
             {
-
                 heroes.map(heroe => (
 
                     <CharacterGrid

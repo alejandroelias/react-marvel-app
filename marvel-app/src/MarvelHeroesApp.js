@@ -1,13 +1,12 @@
 import React from 'react';
-import { CharactersScreen } from './components/Characters/CharactersScreen';
+// import { CharactersScreen } from './components/Characters/CharactersScreen';
+import { AppRouter } from './routers/AppRouter';
 
 export const MarvelHeroesApp = () => {
 
     return (
         <div>
-            <h1>Heroes Marvel</h1>
-            <hr />
-            <CharactersScreen />
+            <AppRouter />
         </div>
     )
 }
