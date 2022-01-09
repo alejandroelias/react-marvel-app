@@ -1,12 +1,19 @@
 import React from 'react'
+import { CharactersScreen } from '../Characters/CharactersScreen';
+import { SeriesScreen } from '../Series/SeriesScreen';
+
+import { Routes, Route, Link } from 'react-router-dom';
 
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, CssBaseline, Divider, Drawer, IconButton, Toolbar, Typography } from '@mui/material';
+import { Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
 import MuiAppBar from '@mui/material/AppBar';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
+import HomeIcon from '@mui/icons-material/Home';
 
 
 //Style and components
@@ -52,7 +59,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
@@ -112,9 +118,43 @@ export const DrawerLeft = () => {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
+
+                <List>
+                    <Link to="/">
+                        <ListItem button>
+                            <ListItemIcon>
+                                <HomeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Home"} />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/character">
+                        <ListItem button>
+                            <ListItemIcon>
+                                <AccountBoxIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Character"} />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/series">
+                        <ListItem button>
+                            <ListItemIcon>
+                                <LocalMoviesIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Series"} />
+                        </ListItem>
+                    </Link>
+                </List>
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
+                <Routes>
+                    <Route path="/" element={<CharactersScreen />} />
+                    <Route path="/character" element={<CharactersScreen />} />
+                    <Route path="/series" element={<SeriesScreen />} />
+                </Routes>
             </Main>
         </Box>
     )
